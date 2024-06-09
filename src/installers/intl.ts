@@ -31,12 +31,12 @@ export const intlInstaller: Installer = ({
   }
 
   copyFile({
-    src: "intl/message/en/en.json",
+    src: "intl/messages/en/en.json",
     dest: "message/en/en.json"
   })
 
   copyFile({
-    src: "intl/message/th/th.json",
+    src: "intl/messages/th/th.json",
     dest: "message/th/th.json"
   })
 
