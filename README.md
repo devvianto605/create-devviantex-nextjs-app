@@ -2,6 +2,8 @@
   create-devviantex-nextjs-app
 </h1>
 
+<img width="648" alt="Screenshot 2567-06-09 at 20 01 45" src="https://github.com/devvianto605/create-devviantex-nextjs-app/assets/101519510/d796c8d4-7136-4b92-954e-96b4c4a05f6a">
+
 <p align="center">
   Extended version of create-t3-app created by Devviantex: create-devviantex-nextjs-app
 </p>
