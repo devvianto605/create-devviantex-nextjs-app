@@ -57,7 +57,7 @@ only npm is available for now!
 ### npm
 
 ```bash
-npm create t3-app@latest
+npm create devviantex-nextjs-app@latest
 ```
 
 For more advanced usage, check out the [CLI docs](https://create.t3.gg/en/installation).
