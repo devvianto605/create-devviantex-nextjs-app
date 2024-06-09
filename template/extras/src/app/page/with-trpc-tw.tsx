@@ -32,7 +32,7 @@ export default async function Home() {
             <h3 className="text-2xl font-bold">Extended Devviantex Adaptation →</h3>
             <div className="text-lg">
               See what's extended from T3 App and what changes, how's project structure,
-              how to use all tools and lib.
+              and how to use all tools and lib.
             </div>
           </Link>
         </div>
