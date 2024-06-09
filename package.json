@@ -1,6 +1,6 @@
 {
   "name": "create-devviantex-nextjs-app",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Create web application with the extended version of t3 stack by Devviantex",
   "license": "MIT",
   "repository": {
@@ -9,7 +9,7 @@
     "directory": "cli"
   },
   "keywords": [
-    "create-devviantex-app",
+    "create-devviantex-nextjs-app",
     "init.tips",
     "next.js",
     "tailwind",

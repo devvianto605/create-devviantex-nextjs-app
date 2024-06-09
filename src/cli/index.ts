@@ -103,7 +103,7 @@ export const runCli = async (): Promise<CliResults> => {
   // FIXME: TEMPORARY WARNING WHEN USING YARN 3. SEE ISSUE #57
   if (process.env.npm_config_user_agent?.startsWith("yarn/3")) {
     logger.warn(`  WARNING: It looks like you are using Yarn 3. This is currently not supported,
-  and likely to result in a crash. Please run create-devviantex-app with another
+  and likely to result in a crash. Please run create-devviantex-nextjs-app with another
   package manager such as pnpm, npm, or Yarn Classic.
   See: https://github.com/t3-oss/create-t3-app/issues/57`);
   }
@@ -296,7 +296,7 @@ export const runCli = async (): Promise<CliResults> => {
       },
     };
   } catch (err) {
-    // If the user is not calling create-devviantex-app from an interactive terminal, inquirer will throw an IsTTYError
+    // If the user is not calling create-devviantex-nextjs-app from an interactive terminal, inquirer will throw an IsTTYError
     // If this happens, we catch the error, tell the user what has happened, and then continue to run the program with a default Devviantex app
     if (err instanceof IsTTYError) {
       logger.warn(`

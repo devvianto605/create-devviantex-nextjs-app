@@ -11,15 +11,15 @@ export const renderVersionWarning = (npmVersion: string) => {
   //   console.log("npm", npmVersion);
 
   if (currentVersion.includes("beta")) {
-    logger.warn("  You are using a beta version of create-devviantex-app.");
+    logger.warn("  You are using a beta version of create-devviantex-nextjs-app.");
     logger.warn("  Please report any bugs you encounter.");
   } else if (currentVersion.includes("next")) {
     logger.warn(
-      "  You are running create-devviantex-app with the @next tag which is no longer maintained."
+      "  You are running create-devviantex-nextjs-app with the @next tag which is no longer maintained."
     );
     logger.warn("  Please run the CLI with @latest instead.");
   } else if (currentVersion !== npmVersion) {
-    logger.warn("  You are using an outdated version of create-devviantex-app.");
+    logger.warn("  You are using an outdated version of create-devviantex-nextjs-app.");
     logger.warn(
       "  Your version:",
       currentVersion + ".",
@@ -46,7 +46,7 @@ function checkForLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {
     https
       .get(
-        "https://registry.npmjs.org/-/package/create-devviantex-app/dist-tags",
+        "https://registry.npmjs.org/-/package/create-devviantex-nextjs-app/dist-tags",
         (res) => {
           if (res.statusCode === 200) {
             let body = "";
@@ -70,7 +70,7 @@ export const getNpmVersion = () =>
   // `fetch` to the registry is faster than `npm view` so we try that first
   checkForLatestVersion().catch(() => {
     try {
-      return execSync("npm view create-devviantex-app version").toString().trim();
+      return execSync("npm view create-devviantex-nextjs-app version").toString().trim();
     } catch {
       return null;
     }

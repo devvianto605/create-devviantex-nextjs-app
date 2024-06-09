@@ -10,4 +10,4 @@ export const PKG_ROOT = path.join(distPath, "../");
 //export const PKG_ROOT = path.dirname(require.main.filename);
 
 export const DEFAULT_APP_NAME = "my-devviantex-app";
-export const CREATE_T3_APP = "create-devviantex-app";
+export const CREATE_T3_APP = "create-devviantex-nextjs-app";
