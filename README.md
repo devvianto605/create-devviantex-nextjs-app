@@ -10,14 +10,6 @@
 
 </div>
 
-## Table of contents
-
-- <a href="#about">The T3 Stack</a>
-- <a href="#axioms">T3 Axioms</a>
-- <a href="#getting-started">Getting Started</a>
-- <a href="#community">Community</a>
-- <a href="#contributors">Contributors</a>
-
 <h2 id="about">The T3 Stack</h2>
 
 The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t3dotgg) focused on **simplicity**, **modularity**, and **full-stack typesafety**. It consists of:
@@ -51,7 +43,7 @@ This is **NOT** an all-inclusive template. We **expect** you to bring your own l
 
 <h2 id="getting-started">Getting Started</h2>
 
-To scaffold an app using `create-t3-app`, run any of the following four commands and answer the command prompt questions:
+To scaffold an app using `create-devviantex-nextjs-app`, run any of the following four commands and answer the command prompt questions:
 
 only npm is available for now!
 ### npm
