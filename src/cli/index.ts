@@ -38,10 +38,6 @@ const defaultOptions: CliResults = {
     "prisma", 
     "tailwind", 
     "trpc", 
-    "shadcn", 
-    "chakra", 
-    "nextAuthWithFirebase", 
-    "nextAuthWithMockUserEncryption"
   ],
   flags: {
     noGit: false,
@@ -162,8 +158,8 @@ export const runCli = async (): Promise<CliResults> => {
             options: [
               { value: "none", label: "None" },
               { value: "tailwind", label: "Tailwind Css" },
-              { value: "shadcn", label: "Shadcn Ui" },
-              { value: "chakra", label: "Chakra Ui" },
+              { value: "shadcn", label: "Shadcn Ui (unfinished: only provided form components prototype)" },
+              { value: "chakra", label: "Chakra Ui (unfinished: only provided form components)" },
             ],
             initialValue: "none",
           });
@@ -174,10 +170,8 @@ export const runCli = async (): Promise<CliResults> => {
             options: [
               { value: "none", label: "None" },
               { value: "next-auth-google", label: "NextAuth.js with Google OAuth and Prisma/Drizzle Adapter(optional)" },
-              { value: "next-auth-firebase", label: "NextAuth.js with Firebase Adapter" },
-              { value: "next-auth-mock", label: "NextAuth.js with mock user data with encryption service" },
-              // Maybe later
-              // { value: "clerk", label: "Clerk" },
+              { value: "next-auth-firebase", label: "NextAuth.js with Firebase Adapter (unimplemented)" },
+              { value: "next-auth-mock", label: "NextAuth.js with mock user data to be used with encryption service (unimplemented)" },
             ],
             initialValue: "none",
           });
@@ -195,6 +189,17 @@ export const runCli = async (): Promise<CliResults> => {
           });
           }
          return "none"
+        },
+        encryption: async ({results}) => {
+          if ((results.authentication === "next-auth-google" && results.database === "none") 
+            || (results.authentication === "none" && results.database === "none")
+            || results.authentication === "next-auth-mock") {
+           return p.confirm({
+            message: "Do you want to include encryption service into the project to use self-implemented encryption (not use third-party adapter)? (unfinished: not integrated)",
+            initialValue: false,
+          });
+          }
+         return false
         },
 
         databaseProvider: ({ results }) => {
@@ -221,7 +226,7 @@ export const runCli = async (): Promise<CliResults> => {
         },
         intl: () => {
           return p.confirm({
-         message: "Would you like to use next-intl for localization? (with translation management service)",
+         message: "Would you like to use next-intl for localization? (with translation management service) (unfinished: all config's done, not integrated)",
          initialValue: false,
        });
      },
@@ -273,6 +278,8 @@ export const runCli = async (): Promise<CliResults> => {
   
     if (project.authentication === "next-auth-firebase") packages.push("nextAuthWithFirebase");
     if (project.authentication === "next-auth-mock") packages.push("nextAuthWithMockUserEncryption");
+
+    if (project.encryption) packages.push("encryption");
 
     if (project.intl) packages.push("intl");
 

@@ -36,5 +36,18 @@ export const dependencyVersionMap = {
   "@tanstack/react-query": "^5.39.0",
   superjson: "^2.2.1",
   "server-only": "^0.0.1",
+
+  "crypto-js": "^4.2.0",
+  "next-intl": "^3.10.0",
+  
+  "@chakra-ui/icons": "^2.1.1",
+  "@chakra-ui/next-js": "^2.2.0",
+  "@chakra-ui/react": "^2.8.2",
+  "@emotion/react": "^11.11.3",
+  "@emotion/styled": "^11.11.0",
+  "@hookform/resolvers": "^3.3.3",
+  "framer-motion": "^10.16.16",
+
+  "react-hook-form": "^7.51.4",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

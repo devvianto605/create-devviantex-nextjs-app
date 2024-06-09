@@ -7,6 +7,10 @@ import { type PackageManager } from "~/utils/getUserPkgManager.js";
 import { dbContainerInstaller } from "./dbContainer.js";
 import { drizzleInstaller } from "./drizzle.js";
 import { dynamicEslintInstaller } from "./eslint.js";
+import { encryptionInstaller } from "./encryption.js";
+import { intlInstaller } from "./intl.js";
+import { chakraInstaller } from "./chakra.js";
+import { shadcnInstaller } from "./shadcn.js";
 
 // Turning this into a const allows the list to be iterated over for programmatically creating prompt options
 // Should increase extensibility in the future
@@ -23,7 +27,8 @@ export const availablePackages = [
   "chakra", 
   "nextAuthWithFirebase", 
   "nextAuthWithMockUserEncryption",
-  "intl"
+  "intl",
+  "encryption"
 ] as const;
 export type AvailablePackages = (typeof availablePackages)[number];
 
@@ -84,15 +89,13 @@ export const buildPkgInstallerMap = (
     inUse: packages.includes("tailwind"),
     installer: tailwindInstaller,
   },
-  // TODO: Implement Installer
   shadcn: {
     inUse: packages.includes("shadcn"),
-    installer: () => {},
+    installer: shadcnInstaller,
   },
-  // TODO: Implement Installer
   chakra: {
     inUse: packages.includes("chakra"),
-    installer: () => {},
+    installer: chakraInstaller,
   },
   trpc: {
     inUse: packages.includes("trpc"),
@@ -110,9 +113,12 @@ export const buildPkgInstallerMap = (
     inUse: true,
     installer: dynamicEslintInstaller,
   },
-  // TODO: Implement Installer
   intl: {
     inUse: packages.includes("intl"),
-    installer: () => {},
+    installer: intlInstaller,
+  },
+  encryption: {
+    inUse: packages.includes("encryption"),
+    installer: encryptionInstaller,
   },
 });
