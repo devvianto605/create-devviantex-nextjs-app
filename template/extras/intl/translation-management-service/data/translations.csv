@@ -1,0 +1,5 @@
+group,subgroup,key,en,th
+greeting,button,greeting_hello,Hello,สวัสดี
+greeting,button,greeting_goodbye,Goodbye,ลาก่อน
+farewell,,greeting_goodbye,Goodbye,ลาก่อน
+farewell,,greeting_see_you,See you,แล้วเจอกัน

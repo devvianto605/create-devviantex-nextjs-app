@@ -1,0 +1,14 @@
+{
+  "name": "translation-transformer",
+  "version": "1.0.0",
+  "description": "A script to transform CSV translations to nested JSON format",
+  "main": "src/transform.js",
+  "scripts": {
+    "start": "node src/transform.js"
+  },
+  "dependencies": {
+    "csv-parser": "^3.0.0"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -1,0 +1,12 @@
+{
+  "greeting": {
+    "button": {
+      "greeting_hello": "สวัสดี",
+      "greeting_goodbye": "ลาก่อน"
+    }
+  },
+  "farewell": {
+    "greeting_goodbye": "ลาก่อน",
+    "greeting_see_you": "แล้วเจอกัน"
+  }
+}

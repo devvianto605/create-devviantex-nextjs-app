@@ -221,7 +221,7 @@ export const runCli = async (): Promise<CliResults> => {
         },
         intl: () => {
           return p.confirm({
-         message: "Would you like to use next-intl for localization? (with csv translation management service)",
+         message: "Would you like to use next-intl for localization? (with translation management service)",
          initialValue: false,
        });
      },

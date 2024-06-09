@@ -1,0 +1,12 @@
+{
+  "greeting": {
+    "button": {
+      "greeting_hello": "Hello",
+      "greeting_goodbye": "Goodbye"
+    }
+  },
+  "farewell": {
+    "greeting_goodbye": "Goodbye",
+    "greeting_see_you": "See you"
+  }
+}
