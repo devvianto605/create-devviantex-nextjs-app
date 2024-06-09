@@ -10,6 +10,17 @@ export default function Home() {
           Create <span className={styles.orangeSpan}>Devviantex</span> App
         </h1>
         <div className={styles.cardRow}>
+        <Link
+            className={styles.card}
+            href="https://create.t3.gg/en/introduction"
+            target="_blank"
+          >
+            <h3 className={styles.cardTitle}>Original T3 Stack Documentation →</h3>
+            <div className={styles.cardText}>
+              Learn more about Create T3 App, the libraries it uses, and how to
+              deploy it.
+            </div>
+          </Link>
           <Link
             className={styles.card}
             href="https://create.devviantex.info/en/introduction"
