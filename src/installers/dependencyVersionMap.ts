@@ -49,5 +49,6 @@ export const dependencyVersionMap = {
   "framer-motion": "^10.16.16",
 
   "react-hook-form": "^7.51.4",
+  "tailwindcss-animate": "^1.0.7",
 } as const;
 export type AvailableDependencies = keyof typeof dependencyVersionMap;

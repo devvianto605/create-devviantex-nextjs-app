@@ -13,6 +13,7 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
       "postcss",
       "prettier",
       "prettier-plugin-tailwindcss",
+      "tailwindcss-animate",
     ],
     devMode: true,
   });
