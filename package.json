@@ -1,11 +1,11 @@
 {
   "name": "create-devviantex-nextjs-app",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Create web application with the extended version of t3 stack by Devviantex",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devvianto605/create-devvianntex-nextjs-app.git",
+    "url": "https://github.com/devvianto605/create-devviantex-nextjs-app",
     "directory": "cli"
   },
   "keywords": [
