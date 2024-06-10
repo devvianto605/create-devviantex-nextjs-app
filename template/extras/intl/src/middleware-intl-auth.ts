@@ -56,7 +56,7 @@ function middleware(intlMiddleware: NextMiddleware) {
       }
 
       const url = new URL(
-        `${validatedLocale}${ROUTES.LOGIN}`,
+        `${validatedLocale}${ROUTES.HOME}`,
         req.url,
       );
 

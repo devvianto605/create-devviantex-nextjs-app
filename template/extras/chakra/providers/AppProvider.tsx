@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ChakraProvider } from '@chakra-ui/react'
-import { mainTheme } from '~themes/mainTheme.ts'
+import { mainTheme } from '~/themes/mainTheme'
 import { useState } from 'react';
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {

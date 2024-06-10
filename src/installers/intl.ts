@@ -66,6 +66,11 @@ export const intlInstaller: Installer = ({
       src: "intl/src/middleware-intl-auth.ts",
       dest: "src/middleware.ts"
     })
+    copyFile({
+      projectDir,
+      src: "intl/src/routes.ts",
+      dest: "src/routes.ts"
+    })
   } else {
     copyFile({
       projectDir,
