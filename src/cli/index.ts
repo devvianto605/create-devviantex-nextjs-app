@@ -34,10 +34,10 @@ interface CliResults {
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
   packages: [
-    "nextAuthWithGoogle", 
-    "prisma", 
-    "tailwind", 
-    "trpc", 
+    "nextAuthWithGoogle",
+    "prisma",
+    "tailwind",
+    "trpc",
   ],
   flags: {
     noGit: false,
@@ -95,8 +95,8 @@ export const runCli = async (): Promise<CliResults> => {
         .bold(
           "@t3dotgg"
         )} and has been used to build awesome fullstack applications like ${chalk
-        .hex("#E24A8D")
-        .underline("https://ping.gg")} \n`
+          .hex("#E24A8D")
+          .underline("https://ping.gg")} \n`
     )
     .parse(process.argv);
 
@@ -158,8 +158,8 @@ export const runCli = async (): Promise<CliResults> => {
             options: [
               { value: "none", label: "None" },
               { value: "tailwind", label: "Tailwind Css" },
-              { value: "shadcn", label: "Shadcn Ui (unfinished: only provided form components prototype)" },
-              { value: "chakra", label: "Chakra Ui (unfinished: only provided form components)" },
+              { value: "shadcn", label: "Shadcn Ui (only config, still need shadcn cli)" },
+              { value: "chakra", label: "Chakra Ui (config + react-hook-form components)" },
             ],
             initialValue: "none",
           });
@@ -169,37 +169,37 @@ export const runCli = async (): Promise<CliResults> => {
             message: "What authentication provider would you like to use?",
             options: [
               { value: "none", label: "None" },
-              { value: "next-auth-google", label: "NextAuth.js with Google OAuth and Prisma/Drizzle Adapter(optional)" },
-              { value: "next-auth-firebase", label: "NextAuth.js with Firebase Adapter (unimplemented)" },
-              { value: "next-auth-mock", label: "NextAuth.js with mock user data to be used with encryption service (unimplemented)" },
+              { value: "next-auth-google", label: "NextAuth.js with Google OAuth + Prisma/Drizzle Adapter(optional)" },
+              // { value: "next-auth-firebase", label: "NextAuth.js Google OAuth + Firebase Adapter" },
+              { value: "next-auth-mock", label: "NextAuth.js with mock user data + Encryption service(optional)" },
             ],
             initialValue: "none",
           });
         },
-        database: async ({results}) => {
+        database: async ({ results }) => {
           if (results.authentication === "next-auth-google" || results.authentication === "none") {
-             return p.select({
-            message: "What database ORM would you like to use?",
-            options: [
-              { value: "none", label: "None" },
-              { value: "prisma", label: "Prisma" },
-              { value: "drizzle", label: "Drizzle" },
-            ],
-            initialValue: "none",
-          });
+            return p.select({
+              message: "What database ORM would you like to use?",
+              options: [
+                { value: "none", label: "None" },
+                { value: "prisma", label: "Prisma" },
+                { value: "drizzle", label: "Drizzle" },
+              ],
+              initialValue: "none",
+            });
           }
-         return "none"
+          return "none"
         },
-        encryption: async ({results}) => {
-          if ((results.authentication === "next-auth-google" && results.database === "none") 
+        encryption: async ({ results }) => {
+          if ((results.authentication === "next-auth-google" && results.database === "none")
             || (results.authentication === "none" && results.database === "none")
             || results.authentication === "next-auth-mock") {
-           return p.confirm({
-            message: "Do you want to include encryption service into the project to use self-implemented encryption (not use third-party adapter)? (unfinished: not integrated)",
-            initialValue: false,
-          });
+            return p.confirm({
+              message: "Do you want to include encryption service into the project?",
+              initialValue: false,
+            });
           }
-         return false
+          return;
         },
 
         databaseProvider: ({ results }) => {
@@ -215,21 +215,27 @@ export const runCli = async (): Promise<CliResults> => {
             initialValue: "sqlite",
           });
         },
-        trpc: async ({results}) => {
-          if (results.authentication === "next-auth-google" || results.authentication === "none") { 
-             return p.confirm({
-            message: "Would you like to use tRPC? (Recommended if using NextAuth.js with Google OAuth and Prisma/Drizzle Adapter as full-stack app)",
-          });
+        trpc: async ({ results }) => {
+          if (results.authentication === "next-auth-google" || results.authentication === "none") {
+            return p.confirm({
+              message: "Would you like to use tRPC? (Recommended if using NextAuth.js with Google OAuth and Prisma/Drizzle Adapter as full-stack app)",
+            });
           }
-          return false
-         
+          return;
         },
         intl: () => {
           return p.confirm({
-         message: "Would you like to use next-intl for localization? (with translation management service) (unfinished: all config's done, not integrated)",
-         initialValue: false,
-       });
-     },
+            message: "Would you like to use next-intl for localization?",
+            initialValue: false,
+          });
+        },
+        translation: ({results}) => {
+          if(!results.intl) return;
+          return p.confirm({
+            message: "With the next-intl, do you want to use Translation management service? (Service to transform CSV translation files to JSON format)",
+            initialValue: false,
+          });
+        },
         ...(!cliResults.flags.noGit && {
           git: () => {
             return p.confirm({
@@ -275,13 +281,14 @@ export const runCli = async (): Promise<CliResults> => {
     if (project.authentication === "next-auth-google") packages.push("nextAuthWithGoogle");
     if (project.database === "prisma") packages.push("prisma");
     if (project.database === "drizzle") packages.push("drizzle");
-  
+
     if (project.authentication === "next-auth-firebase") packages.push("nextAuthWithFirebase");
     if (project.authentication === "next-auth-mock") packages.push("nextAuthWithMockUserEncryption");
 
     if (project.encryption) packages.push("encryption");
 
     if (project.intl) packages.push("intl");
+    if (project.translation) packages.push("translation");
 
     return {
       appName: project.name ?? cliResults.appName,

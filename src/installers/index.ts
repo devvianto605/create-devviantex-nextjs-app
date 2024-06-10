@@ -11,6 +11,7 @@ import { encryptionInstaller } from "./encryption.js";
 import { intlInstaller } from "./intl.js";
 import { chakraInstaller } from "./chakra.js";
 import { shadcnInstaller } from "./shadcn.js";
+import { translationInstaller } from "./translation.js";
 
 // Turning this into a const allows the list to be iterated over for programmatically creating prompt options
 // Should increase extensibility in the future
@@ -22,13 +23,14 @@ export const availablePackages = [
   "trpc",
   "envVariables",
   "eslint",
-  "dbContainer", 
-  "shadcn", 
-  "chakra", 
-  "nextAuthWithFirebase", 
+  "dbContainer",
+  "shadcn",
+  "chakra",
+  "nextAuthWithFirebase",
   "nextAuthWithMockUserEncryption",
   "intl",
-  "encryption"
+  "encryption",
+  "translation"
 ] as const;
 export type AvailablePackages = (typeof availablePackages)[number];
 
@@ -75,15 +77,13 @@ export const buildPkgInstallerMap = (
     inUse: packages.includes("drizzle"),
     installer: drizzleInstaller,
   },
-   // TODO: Implement Installer
    nextAuthWithFirebase: {
     inUse: packages.includes("nextAuthWithFirebase"),
-    installer: () => {},
+    installer: nextAuthInstaller,
   },
-  // TODO: Implement Installer
   nextAuthWithMockUserEncryption: {
     inUse: packages.includes("nextAuthWithMockUserEncryption"),
-    installer: () => {},
+    installer: nextAuthInstaller,
   },
   tailwind: {
     inUse: packages.includes("tailwind"),
@@ -116,6 +116,10 @@ export const buildPkgInstallerMap = (
   intl: {
     inUse: packages.includes("intl"),
     installer: intlInstaller,
+  },
+  translation: {
+    inUse: packages.includes("translation"),
+    installer: translationInstaller,
   },
   encryption: {
     inUse: packages.includes("encryption"),

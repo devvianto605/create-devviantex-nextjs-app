@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { locales } from '~/libs/next-intl';
+import { locales } from '~/lib/next-intl';
 import { getRequestConfig } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 

@@ -1,4 +1,4 @@
-import { localePrefix, locales, defaultLocale } from '~/libs/next-intl';
+import { localePrefix, locales, defaultLocale } from '~/lib/next-intl';
 import createIntlMiddleware from 'next-intl/middleware';
 import {
   NextFetchEvent,

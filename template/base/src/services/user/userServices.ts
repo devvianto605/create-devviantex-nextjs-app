@@ -1,7 +1,7 @@
 // // Convention: The file name should follow 'somethingServices
 // import type { AxiosResponse } from 'axios';
 // import axios from 'axios';
-// // OR import axios from '@libs/axios';
+// // OR import axios from '@lib/axios';
 
 // const servicePath = '/'
 // export type UserData = {}

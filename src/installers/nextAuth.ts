@@ -13,6 +13,11 @@ export const nextAuthInstaller: Installer = ({
   const usingPrisma = packages?.prisma.inUse;
   const usingDrizzle = packages?.drizzle.inUse;
 
+  const usingNextAuthWithFirebase = packages?.nextAuthWithFirebase.inUse;
+  const usingNextAuthWithMockUserEncryption = packages?.nextAuthWithMockUserEncryption.inUse;
+
+  const usingEncryption = packages?.encryption.inUse
+
   const deps: AvailableDependencies[] = ["next-auth"];
   if (usingPrisma) deps.push("@auth/prisma-adapter");
   if (usingDrizzle) deps.push("@auth/drizzle-adapter");
@@ -39,10 +44,16 @@ export const nextAuthInstaller: Installer = ({
       ? "with-prisma.ts"
       : usingDrizzle
         ? "with-drizzle.ts"
-        : "base.ts"
+        : usingNextAuthWithFirebase
+          ? "base.ts" // TODO: implement case: usingNextAuthWithFirebase
+          : usingNextAuthWithMockUserEncryption
+            ? usingEncryption ? "with-encryption.ts": "with-credential.ts" // TODO: improve readability
+            : "base.ts"
   );
   const authConfigDest = path.join(projectDir, "src/server/auth.ts");
 
   fs.copySync(apiHandlerSrc, apiHandlerDest);
   fs.copySync(authConfigSrc, authConfigDest);
+
+  // TODO: copy mock user data if usingNextAuthWithMockUserEncryption wit encrypt data or not depends on usingEncryption
 };

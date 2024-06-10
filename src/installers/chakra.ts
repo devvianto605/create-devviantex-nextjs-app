@@ -36,4 +36,7 @@ export const chakraInstaller: Installer = ({
   };
 
   copyFolder("chakra/components", "src/components");
+  copyFolder("chakra/themes", "src/themes");
+  copyFolder("chakra/providers", "src/providers");
+
 };
