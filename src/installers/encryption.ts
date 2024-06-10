@@ -19,8 +19,8 @@ export const encryptionInstaller: Installer = ({
 
   const extrasDir = path.join(PKG_ROOT, "template/extras");
 
-  const srcFile = "encryption/lib/encryption.ts";
-  const destFile = "src/lib/encryption.ts";
+  const srcFile = "encryption/encryption.ts";
+  const destFile = "src/lib/encryption/encryption.ts";
 
   const srcFilePath = path.join(extrasDir, srcFile);
   const destFilePath = path.join(projectDir, destFile);
