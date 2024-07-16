@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs-extra";
+import { copyFile } from "~/helpers/copy";
 
 import { PKG_ROOT } from "~/consts.js";
 import { type Installer } from "~/installers/index.js";
@@ -36,4 +37,13 @@ export const tailwindInstaller: Installer = ({ projectDir }) => {
   fs.copySync(postcssCfgSrc, postcssCfgDest);
   fs.copySync(cssSrc, cssDest);
   fs.copySync(prettierSrc, prettierDest);
+
+
+  // Utilize same form wrapper from Shadcn template (even not using Shadcn)
+  copyFile({
+    projectDir,
+    src: "shadcn/components/form/form-wrapper.tsx",
+    dest: "src/components/form/form-wrapper.tsx"
+  })
+
 };

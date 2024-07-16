@@ -171,7 +171,7 @@ export const runCli = async (): Promise<CliResults> => {
               { value: "none", label: "None" },
               { value: "next-auth-google", label: "NextAuth.js with Google OAuth + Prisma/Drizzle Adapter(optional)" },
               // { value: "next-auth-firebase", label: "NextAuth.js Google OAuth + Firebase Adapter" },
-              { value: "next-auth-mock", label: "NextAuth.js with mock user data + Encryption service(optional)" },
+              { value: "next-auth-mock", label: "NextAuth.js with custom cretentails + Encryption service(optional)" },
             ],
             initialValue: "none",
           });
@@ -273,7 +273,7 @@ export const runCli = async (): Promise<CliResults> => {
 
     const packages: AvailablePackages[] = [];
     if (project.styling === "tailwind") packages.push("tailwind");
-    if (project.styling === "shadcn") packages.push("shadcn");
+    if (project.styling === "shadcn") { packages.push("tailwind");packages.push("shadcn"); }
     if (project.styling === "chakra") packages.push("chakra");
 
     if (project.trpc) packages.push("trpc");

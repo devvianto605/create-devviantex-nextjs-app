@@ -9,8 +9,6 @@ const customHeight = {
   "screen-code-content": `calc(100vh - ${H_NAVBAR} - 124px )`,
 };
 
-// export const W_SIDEBAR = '280px';
-// const customWidth = { sidebar: `${W_SIDEBAR}`, 'screen-excl-sidebar': `calc(100vw - ${W_SIDEBAR})` };
 const customWidth = {};
 
 const config = {
